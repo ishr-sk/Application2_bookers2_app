@@ -14,11 +14,12 @@
       </tr>
     </tbody>
    </table>
-  
-  <% if @user.id == current_user %>
+  <div>
+  <% if @user.id == current_user.id %>
     <p><%= link_to "編集", edit_user_path(@user) %></p>
   <% end %>
-</div>
+  </div>
+
 
 <div>
 <h2>New book</h2>
