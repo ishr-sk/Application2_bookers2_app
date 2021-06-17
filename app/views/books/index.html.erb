@@ -1,3 +1,12 @@
+<font color="red">
+<% if @book.errors.any? %>
+  <h2><%= @book.errors.count %> error prohibited this obj from being saved:</h2>
+  <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end %>
+</font>
+
 <h1>User info</h1>
 <div class="profile-container">
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %>

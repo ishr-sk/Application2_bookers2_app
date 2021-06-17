@@ -1,3 +1,11 @@
+  <font color="green">
+    <% if flash[:notice] %>
+      <p id="notice">
+        <%= flash[:notice] %>
+      </p>
+    <% end %>
+  </font>
+  
 <h1>User info</h1>
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %>
   <table>
