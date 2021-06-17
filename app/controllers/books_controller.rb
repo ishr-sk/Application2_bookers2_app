@@ -14,10 +14,13 @@ end
 def index
   @books = Book.page(params[:page]).reverse_order
   @book = Book.new
+  @user = current_user
 end
 
 def show
+  @book_new = Book.new
   @book = Book.find(params[:id])
+  @user = current_user
 end
 
 def edit

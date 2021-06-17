@@ -1,4 +1,24 @@
-
+<h1>User info</h1>
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %>
+  <table>
+    <thead>
+      <tr>
+        <th>name</th>
+        <th><%= @user.name %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>introduction</th>
+        <th><%= @user.introduction %></th>
+      </tr>
+    </tbody>
+   </table>
+  
+  <% if @user.id == current_user %>
+    <p><%= link_to "編集", edit_user_path(@user) %></p>
+  <% end %>
+</div>
 
 <div>
 <h2>New book</h2>
@@ -29,7 +49,7 @@
       <% @users.each do |user| %>
         <tr>
           <td>
-            <%= attachment_image_tag @user, :profile_image_id, :fill, 50, 50, format: 'jpg', fallback: "no_image.jpg" %>
+            <%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpg', fallback: "no_image.jpg" %>
           </td>
           <td><%= user.name %></td>
           <td><%= link_to "Show" , user_path(user.id) %></td>
