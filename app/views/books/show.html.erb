@@ -6,33 +6,31 @@
     <% end %>
   </font>
 
-<%= render 'users/user_info', user: @user %>
-
-<div>
-<h2>New book</h2>
-<%= form_with model:@book_new, local:true do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  <h4>Body</h4>
-  <%= f.text_area :body %>
-  </br>
-  <%= f.submit 'Create Book' %>
-<% end %>
-</div>
-
-<h1>Book detail</h1>
-  <table>
-    <thead>
-      <tr>
-        <th colspan="5"></th>
-      </tr>
-    </thead>
-    
-    <tdoby>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 pt-3">
+      <%= render 'users/user_info', user: @user %>
+        <div>
+        <h2>New book</h2>
+        <%= form_with model:@book_new, local:true do |f| %>
+        <p>Title</p>
+        <%= f.text_field :title, class: 'form-control' %>
+        <p>Opinion</p>
+        <%= f.text_area :body, class: 'form-control' %>
+        </br>
+        <%= f.submit 'Create Book', class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+      
+      <div class="col-md-8 offset-md-1 pt-3">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tdoby>
         <tr>
           <td>
             <%= link_to user_path(@user.id) do %>
-            <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpg', fallback: "no_image.jpg" %>
+            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %>
             </br>
             <%= @user.name %>
             <% end %>
@@ -45,15 +43,17 @@
           <td><%= @book.body %></td>
              <td>
             <% if @book.user == current_user %>
-              <%= link_to "Edit", edit_book_path(@book) %>
+              <%= link_to "Edit", edit_book_path(@book), class: 'btn btn-sm btn-success' %>
             <% end %>
           </td>
           <td>
             <% if @book.user == current_user %>
-              <%= link_to "Destroy", book_path(@book), method: :delete %>
+              <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか?", class: 'btn  btn-sm btn-danger' %>
             <% end %>
           </td>
         </tr>
     </tdoby>
-    
-  </table>
+    </table>
+  </div>
+  </div>
+  </div>
