@@ -1,3 +1,7 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5 mx-auto pt-3">
+<h2>User info</h2>
 <font color="red">
 <% if @user.errors.any? %>
   <h2><%= @user.errors.count %> error prohibited this obj from being saved:</h2>
@@ -6,11 +10,6 @@
   <% end %>
 <% end %>
 </font>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-5 mx-auto pt-3">
-<h2>User info</h2>
 <%= form_with model:@user, local:true do |f| %>
   <label for="inputName">Name</label>
   </br>
