@@ -1,37 +1,6 @@
-<h1>User info</h1>
-  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %>
-  <table>
-    <thead>
-      <tr>
-        <th>name</th>
-        <th><%= @user.name %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>introduction</th>
-        <th><%= @user.introduction %></th>
-      </tr>
-    </tbody>
-   </table>
-  <div>
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "編集", edit_user_path(@user) %></p>
-  <% end %>
-  </div>
+<%= render 'users/user_info', user: @user %>
 
-<div>
-<h2>New book</h2>
-<%= form_with model:@book, local:true do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  <h4>Body</h4>
-  <%= f.text_area :body %>
-  </br>
-  <%= f.submit 'Create Book' %>
-<% end %>
-</div>
-
+<%= render 'books/book_new', book: @book %>
 
 <div>
   <h1>Users</h1>
