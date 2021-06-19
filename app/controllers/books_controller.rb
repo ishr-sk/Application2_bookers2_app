@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
-  
-def new
+  def new
   @book = Book.new
 end
 
@@ -29,8 +28,14 @@ def show
   @user = @book.user
 end
 
+# ログインユーザーではない場合は編集できず一覧画面に戻る
 def edit
   @book = Book.find(params[:id])
+  if @book.user == current_user 
+      render :edit
+  else
+      redirect_to books_path
+  end
 end
 
 def update

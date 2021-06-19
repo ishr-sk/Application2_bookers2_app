@@ -1,4 +1,8 @@
-<font color="red">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5 mx-auto pt-3">
+      <h2>Editing Book</h2>
+      <font color="red">
 <% if @book.errors.any? %>
   <h2><%= @book.errors.count %> error prohibited this obj from being saved:</h2>
   <% @book.errors.full_messages.each do |message| %>
@@ -6,11 +10,6 @@
   <% end %>
 <% end %>
 </font>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-5 mx-auto pt-3">
-      <h2>Editing Book</h2>
       <%= form_with model:@book, local:true do |f| %>
       <div>
         <label for="book_title">Title</label>

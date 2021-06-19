@@ -23,8 +23,14 @@ class UsersController < ApplicationController
     end
   end
   
-  def edit
+  # ログインユーザーではない場合は編集できず自分のuser詳細画面に戻る
+  def edit 
     @user = User.find(params[:id])
+    if @user == current_user
+      render :edit
+    else
+      redirect_to user_path(current_user)
+    end
   end
   
   # ユーザ情報の変更
